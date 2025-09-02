@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Document
+@Document(collection = "prescription")
 public class Prescription {
 
     private String id;
