@@ -1,4 +1,6 @@
 package com.example.healthcaresystem.Prescription;
 
-public class PrescriptionService {
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public class PrescriptionService{
 }

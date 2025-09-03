@@ -7,7 +7,9 @@ import lombok.Data;
 
 import javax.security.auth.callback.LanguageCallback;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 @Entity
@@ -22,26 +24,31 @@ public class Appointment {
     @ManyToOne
     @JoinColumn(name = "patient_id",nullable = false)
     private Patient patient ;
-    private boolean isCompleted;
-    private LocalDateTime time;
+    private boolean isCompleted=false;
+    @Column(nullable = false)
+    private LocalDate appointmentDate;
+    @Column(nullable = false)
+    private LocalTime appointmentTime;
     //we need to store the date and tim of the appointment.
 
 
     public Appointment() {
     }
 
-    public Appointment( Doctor doctor, Patient patient, boolean isCompleted, LocalDateTime time) {
-
-        this.doctor = doctor;
-        this.patient = patient;
-        this.isCompleted = isCompleted;
-        this.time = time;
-    }
-    public Appointment(long id, Doctor doctor, Patient patient, boolean isCompleted, LocalDateTime time) {
+    public Appointment(Long id, Doctor doctor, Patient patient, boolean isCompleted, LocalDate appointmentDate, LocalTime appointmentTime) {
         this.id = id;
         this.doctor = doctor;
         this.patient = patient;
         this.isCompleted = isCompleted;
-        this.time = time;
+        this.appointmentDate = appointmentDate;
+        this.appointmentTime = appointmentTime;
+    }
+    public Appointment( Doctor doctor, Patient patient, boolean isCompleted, LocalDate appointmentDate, LocalTime appointmentTime) {
+
+        this.doctor = doctor;
+        this.patient = patient;
+        this.isCompleted = isCompleted;
+        this.appointmentDate = appointmentDate;
+        this.appointmentTime = appointmentTime;
     }
 }
